@@ -1,0 +1,31 @@
+main {
+    padding: 64px 0;
+    display: grid;
+    justify-content: center;
+}
+
+.content {
+    max-width: 800px;
+    text-align: center;
+}
+
+p {
+    margin-top: 8px;
+}
+
+h5 {
+    color: rgb(95, 95, 95);
+    margin-top: 8px;
+}
+
+button {
+    margin-top: 12px;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.fileButtons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
