@@ -1,8 +1,8 @@
-import navStyle from "./nav.module.css";
+import style from "./nav.module.css";
 
 function NavLink({ link, text }) {
   return (
-    <li className={navStyle.navLink}>
+    <li className={style.navLink}>
       <a href={link}>{text}</a>
     </li>
   );

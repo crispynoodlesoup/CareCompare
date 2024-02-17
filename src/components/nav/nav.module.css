@@ -5,6 +5,8 @@ nav {
 
   justify-content: space-between;
   align-items: center;
+
+  box-shadow: 0 0 8px 8px lightgrey;
 }
 
 h2 {

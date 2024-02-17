@@ -16,16 +16,12 @@ body {
   width: 100%;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 1fr;
   grid-template-rows: 64px 1fr;
 }
 
 ul {
   list-style: none;
-}
-
-nav {
-  grid-column: 1 / 3;
 }
 
 a {
