@@ -1,0 +1,38 @@
+nav {
+  height: 100%;
+  background-color: #c23a6e;
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  padding: 0 32px;
+  color: white;
+}
+
+nav ul {
+  padding: 0 32px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+a {
+    color: #fbced1;
+    font-weight: bold;
+    transition: all 0.15s;
+}
+
+a:hover {
+    color: #ffffff;
+}
+
+a:active {
+    color: #b1b1b1;
+}
+
+.selectedLink {
+    color: #ffffff;
+}
