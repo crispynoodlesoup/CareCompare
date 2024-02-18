@@ -2,42 +2,6 @@ import style from "./priceChecker.module.css";
 import { useState, useEffect, useRef } from "react";
 import axios from 'axios';
 
-let myData = {
-  "total": 1,
-  "percentage": 140.0,
-  "discrepancies": 5,
-  "items": [
-  {
-    name: "tissues",
-    code: "00000",
-    average: 2.5,
-    measured: 20.0,
-  },
-  {
-    name: "bandages",
-    code: "00001",
-    average: 4.5,
-    measured: 7.0,
-  },
-  {
-    name: "more tissues",
-    code: "00002",
-    average: 2.5,
-    measured: 2.8,
-  },
-  {
-    name: "even more bandages",
-    code: "00003",
-    average: 4.5,
-    measured: 4.4,
-  },
-]
-};
-
-// total represents total cost difference between average and measured
-// percentage represents price over average
-// large represents large discrepancies (>$50 or 50% more expensive)
-// items is the complete list of items as objects in a list
 function Analysis({ data }) {
   const [userLocation, setUserLocation] = useState({lat:0, lon:0});
   const [attorneys, setAttorneys] = useState([]);
