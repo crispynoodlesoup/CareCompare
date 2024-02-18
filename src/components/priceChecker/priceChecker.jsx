@@ -121,11 +121,13 @@ function PriceChecker() {
   // post request to API
   useEffect(() => {
     if (isMounted.current) {
+      const formData = new FormData();
+      formData.append('file', file);
       // dummy URL for testing, change this out for the real post
       fetch("http://127.0.0.1:5000/imgProcessing", {
         mode: "cors",
         method: "POST",
-        body: file,
+        body: formData,
       })
         .then((response) => {
           if (response.status >= 400) {
