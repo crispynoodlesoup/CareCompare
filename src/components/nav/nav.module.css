@@ -38,3 +38,13 @@ a:active {
 .selectedLink {
     color: #ffffff;
 }
+
+@media (max-width: 720px) {
+    h2 {
+      padding: 0 12px;
+    }
+  
+    nav ul {
+      padding: 0 12px;
+    }
+}
