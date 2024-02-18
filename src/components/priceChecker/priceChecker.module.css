@@ -7,6 +7,8 @@ main {
 .content {
     max-width: 800px;
     text-align: center;
+    display: grid;
+    justify-content: center;
 }
 
 p {
@@ -19,7 +21,7 @@ h5 {
 }
 
 .fileImage {
-    margin-top: 16px;
+    margin: 16px auto 0;
     max-width: 600px;
     box-shadow: 2px 2px 8px 4px lightgrey;
 }
@@ -64,5 +66,68 @@ input[type="file"] {
 }
 
 .selectedFile {
+    font-size: 14px;
+}
+
+.overviewTitle {
+    margin-top: 32px;
+    color: black;
+}
+
+.overview {
+    color: black;
+    margin: 16px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: min-content;
+    column-gap: 16px;
+    width: 100%;
+    justify-content: center;
+
+}
+
+.statBox {
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 2px 2px 6px 2px lightgrey;
+}
+
+.statBox h3 {
+    font-size: 32px;
+}
+
+.statBox p {
+    margin: 0;
+}
+
+.itemTable {
+    box-shadow: 2px 2px 6px 2px lightgrey;
+    border: none;
+    overflow: hidden;
+    border-radius: 4px;
+    border-collapse: collapse;
+}
+
+.itemTable thead {
+    background-color: #ff90ba;
+    color: white;
+}
+
+.itemTable th, .itemTable td {
+    text-align: left;
+    padding: 8px 16px;
+    max-width: 240px;
+    text-wrap: wrap;
+}
+
+.itemTable tr:nth-child(2n) {
+    background-color: #eee;
+}
+
+.itemPercent {
+    padding: 4px 8px;
+    width: min-content;
+    border-radius: 4px;
+    font-weight: bold;
     font-size: 14px;
 }

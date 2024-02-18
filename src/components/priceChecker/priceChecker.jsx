@@ -1,11 +1,115 @@
 import style from "./priceChecker.module.css";
 import { useState, useEffect, useRef } from "react";
 
+let list = [
+  {
+    name: "tissues",
+    code: "00000",
+    average: 2.5,
+    measured: 20.0,
+  },
+  {
+    name: "bandages",
+    code: "00001",
+    average: 4.5,
+    measured: 7.0,
+  },
+  {
+    name: "more tissues",
+    code: "00002",
+    average: 2.5,
+    measured: 2.8,
+  },
+  {
+    name: "even more bandages",
+    code: "00003",
+    average: 4.5,
+    measured: 4.4,
+  },
+];
+
+// total represents total cost difference between average and measured
+// percentage represents price over average
+// large represents large discrepancies (>$50 or 50% more expensive)
+// items is the complete list of items as objects in a list
+function Analysis({ total, percentage, discrepancies, items }) {
+  let cheaper = true;
+  if (percentage > 0) cheaper = false;
+
+  return (
+    <>
+      <h2 className={style.overviewTitle}>Your Price Summary</h2>
+      <div className={style.overview}>
+        <div className={style.statBox}>
+          <h3>${total}</h3>
+          {cheaper ? <p>Cheaper</p> : <p>More Expensive</p>}
+        </div>
+        <div className={style.statBox}>
+          <h3>{percentage}%</h3>
+          <p>{cheaper ? "Lower" : "Higher"} than Average</p>
+        </div>
+        <div className={style.statBox}>
+          <h3>{discrepancies}</h3>
+          <p>Major Discrepancies</p>
+        </div>
+      </div>
+      <table className={style.itemTable}>
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Item Code</th>
+            <th>Avg. Price</th>
+            <th>Your Price</th>
+            <th>% difference</th>
+          </tr>
+        </thead>
+        <tbody>
+          {items.map((item) => {
+            let itemPercent = Math.round((item.measured / item.average) * 100);
+            itemPercent = itemPercent - 100;
+            let color = "white";
+            let textColor = "black";
+            if (itemPercent >= 15) {
+              color = "#ffbdc0";
+              textColor = "#ff4e4e";
+            }
+            else if (itemPercent <= 0) {
+              color = "#9dff9d";
+              textColor = "#00a600";
+            }
+            return (
+              <tr key={item.code}>
+                <td>{item.name}</td>
+                <td>{item.code}</td>
+                <td>${item.average}</td>
+                <td>${item.measured}</td>
+                <td>
+                  <div
+                    style={{ backgroundColor: color,
+                    color: textColor }}
+                    className={style.itemPercent}
+                  >
+                    {itemPercent > 0 ? "+" : null}
+                    {itemPercent}%
+                  </div>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </>
+  );
+}
+
+// main body
 function PriceChecker() {
   const isMounted = useRef(false);
   const [file, setFile] = useState(null);
   const [submit, setSubmit] = useState({ count: 0 });
+  const [overview, setOverview] = useState(false);
 
+  // post request to API
   useEffect(() => {
     if (isMounted.current) {
       // dummy URL for testing, change this out for the real post
@@ -71,9 +175,7 @@ function PriceChecker() {
             <button
               type="button"
               className={style.fileButton}
-              onClick={(e) =>
-                setSubmit({ count: submit.count + 1 })
-              }
+              onClick={(e) => setSubmit({ count: submit.count + 1 })}
             >
               SUBMIT
             </button>
@@ -83,6 +185,7 @@ function PriceChecker() {
             </button>
           )}
         </form>
+        <Analysis total={100} percentage={20} discrepancies={2} items={list} />
       </div>
     </main>
   );
