@@ -22,19 +22,29 @@ nav ul {
 }
 
 a {
-    color: #fbced1;
-    font-weight: bold;
-    transition: all 0.15s;
+  color: #fbced1;
+  font-weight: bold;
+  transition: all 0.15s;
 }
 
 a:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 a:active {
-    color: #b1b1b1;
+  color: #b1b1b1;
 }
 
 .selectedLink {
-    color: #ffffff;
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  h2 {
+    padding: 0 12px;
+  }
+
+  nav ul {
+    padding: 0 12px;
+  }
 }

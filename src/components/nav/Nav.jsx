@@ -13,7 +13,6 @@ function Nav() {
     <nav>
       <h2>CareCompare</h2>
       <ul>
-        <NavLink link="./" text="Home" />
         <NavLink link="./" text="Price Checker" />
         <NavLink link="./" text="About" />
       </ul>
