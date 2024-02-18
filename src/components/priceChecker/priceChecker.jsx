@@ -104,6 +104,11 @@ function Analysis({ data }) {
         </table>
       </div>
       <h2 className={style.overviewTitle}>Attorneys Near You</h2>
+      <p>
+        CareCompare should not be your only source of guidance on this issue! If
+        you believe you have a case to appeal your expenses, please reach out to
+        a credible attorney or consultant on this matter.
+      </p>
       <div className={style.fileButtons}>
         <button className={style.fileButton} onClick={handleGetAttorneys}>
           Find Nearby Attorneys
