@@ -76,7 +76,7 @@ function Analysis({ data }) {
           {items.map((item) => {
             let itemPercent = Math.round((item.measured / item.average) * 100);
             itemPercent = itemPercent - 100;
-            let color = "white";
+            let color = "#00000000";
             let textColor = "black";
             if (itemPercent >= 15) {
               color = "#ffbdc0";
@@ -136,7 +136,7 @@ function PriceChecker() {
           return response.json();
         })
         .then((data) => {
-          setData(myData);
+          setData(data);
         })
         .catch((error) => console.log(error));
     }

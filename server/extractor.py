@@ -90,9 +90,9 @@ def parseandgather(image_file):
         scam_value+=float(procedure_charge['Charge'])       
         items.append(item)
     response = {
-        "total": scam_value-avg_value,
+        "total": round(scam_value-avg_value,2),
         "percentage": round(float(scam_value/avg_value)*100, 1),
         "discrepancies": discrepancies,
-        "items:": items
+        "items": items
     }
     return response
