@@ -1,5 +1,5 @@
 main {
-    padding: 64px 0;
+    padding: 48px 0;
     display: grid;
     justify-content: center;
 }
@@ -16,6 +16,12 @@ p {
 h5 {
     color: rgb(95, 95, 95);
     margin-top: 8px;
+}
+
+.fileImage {
+    margin-top: 16px;
+    max-width: 600px;
+    box-shadow: 2px 2px 8px 4px lightgrey;
 }
 
 .fileButtons {
@@ -58,5 +64,5 @@ input[type="file"] {
 }
 
 .selectedFile {
-    font-size: 12px;
+    font-size: 14px;
 }

@@ -17,6 +17,16 @@ function PriceChecker() {
           your medical bill, and submit it here for an analysis.
         </p>
         <h5>*Please upload a UB-04 document in a PNG or JPEG format</h5>
+        {file ? (
+          <img
+            className={style.fileImage}
+            src={URL.createObjectURL(file)}
+            alt="UB-04 document image"
+          />
+        ) : null}
+        {file ? (
+          <p className={style.selectedFile}>{`Selected file: ${file.name}`}</p>
+        ) : null}
         <form className={style.fileButtons}>
           <label htmlFor="upload" className={style.fileButton}>
             UPLOAD
@@ -37,9 +47,6 @@ function PriceChecker() {
             </button>
           )}
         </form>
-        {file ? (
-          <p className={style.selectedFile}>{`Selected file: ${file.name}`}</p>
-        ) : null}
       </div>
     </main>
   );
