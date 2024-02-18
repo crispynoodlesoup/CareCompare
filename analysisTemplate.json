@@ -1,0 +1,19 @@
+{
+    "total": 1,
+    "percentage": 140.0,
+    "discrepancies": 5,
+    "items": [
+        {
+            "name": "tissues",
+            "code": "00000",
+            "average": 2.50,
+            "measured": 20.0
+        },
+        {
+            "name": "bandages",
+            "code": "00001",
+            "average": 4.50,
+            "measured": 7.0
+        }
+    ]
+}
