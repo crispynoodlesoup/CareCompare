@@ -35,10 +35,11 @@ def analyze_text(text):
     return results
 
 def process_image(image_file):
+    print(str(image_file))
     # Open the image and perform OCR
     path_to_tesseract = "C:\Program Files\Tesseract-OCR\\tesseract.exe"
     pytesseract.tesseract_cmd = path_to_tesseract 
-    img = image_file
+    img = Image.open(image_file)
     text = pytesseract.image_to_string(img, lang='eng', config='--psm 6')
 
     # Analyze the extracted text
