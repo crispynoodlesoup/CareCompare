@@ -108,6 +108,35 @@ input[type="file"] {
     border-collapse: collapse;
 }
 
+.itemTable2 {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 6px 2px lightgrey;
+    border: none;
+    overflow: hidden;
+    border-radius: 4px;
+    border-collapse: collapse;
+    margin-top: 1.5vh;
+    width: 100;
+}
+
+
+.itemTable2 thead {
+    background-color: #ff90ba;
+    color: white;
+}
+
+.itemTable2 th, .itemTable2 td {
+    text-align: left;
+    padding: 8px 16px;
+    max-width: 240px;
+    text-wrap: wrap;
+}
+
+.itemTable2 tr:nth-child(2n) {
+    background-color: #eee;
+}
+
 .itemTable thead {
     background-color: #ff90ba;
     color: white;

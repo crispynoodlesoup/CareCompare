@@ -1,5 +1,6 @@
 import style from "./priceChecker.module.css";
 import { useState, useEffect, useRef } from "react";
+import axios from 'axios';
 
 let myData = {
   "total": 1,
@@ -38,6 +39,30 @@ let myData = {
 // large represents large discrepancies (>$50 or 50% more expensive)
 // items is the complete list of items as objects in a list
 function Analysis({ data }) {
+  const [userLocation, setUserLocation] = useState({lat:0, lon:0});
+  const [attorneys, setAttorneys] = useState([]);
+
+  const handleGetAttorneys = async () => {
+    try{
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const {latitude, longitude} = position.coords;
+          setUserLocation({lat: latitude, lon: longitude});
+          axios.get(`http://localhost:5000/getNearbyAttorneys?lat=${latitude}&lon=${longitude}`).then(
+            (response) => {
+              setAttorneys(response.data.attorneys);
+            }).catch((error) => {
+              console.error("Error fetching attorneys: " + error);
+            });
+          }, (error) => {
+            console.error("Error fetching attorneys: " + error);
+          }
+        );
+        }catch(error){
+          console.error("Error fetching attorneys: " + error);
+        }
+    };
+
   let total = data.total;
   let percentage = data.percentage;
   let discrepancies = data.discrepancies;
@@ -107,6 +132,30 @@ function Analysis({ data }) {
           })}
         </tbody>
       </table>
+      <h2 className={style.overviewTitle}>Attorneys Near You</h2>
+      <div>
+      <button className={style.fileButton} onClick={handleGetAttorneys}>Find Nearby Attorneys</button>
+      <table className={style.itemTable2}>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {attorneys.map((attorney) => {
+            return (
+              <tr key={attorney.id}>
+                <td>{attorney.name}</td>
+                <td>{attorney.email}</td>
+                <td>{attorney.full_address}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
     </>
   );
 }
