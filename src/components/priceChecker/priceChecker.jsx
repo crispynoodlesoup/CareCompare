@@ -1,7 +1,11 @@
 import style from "./priceChecker.module.css";
 import { useState, useEffect, useRef } from "react";
 
-let list = [
+let myData = {
+  "total": 1,
+  "percentage": 140.0,
+  "discrepancies": 5,
+  "items": [
   {
     name: "tissues",
     code: "00000",
@@ -26,13 +30,18 @@ let list = [
     average: 4.5,
     measured: 4.4,
   },
-];
+]
+};
 
 // total represents total cost difference between average and measured
 // percentage represents price over average
 // large represents large discrepancies (>$50 or 50% more expensive)
 // items is the complete list of items as objects in a list
-function Analysis({ total, percentage, discrepancies, items }) {
+function Analysis({ data }) {
+  let total = data.total;
+  let percentage = data.percentage;
+  let discrepancies = data.discrepancies;
+  let items = data.items;
   let cheaper = true;
   if (percentage > 0) cheaper = false;
 
@@ -107,7 +116,7 @@ function PriceChecker() {
   const isMounted = useRef(false);
   const [file, setFile] = useState(null);
   const [submit, setSubmit] = useState({ count: 0 });
-  const [overview, setOverview] = useState(false);
+  const [data, setData] = useState(null);
 
   // post request to API
   useEffect(() => {
@@ -124,7 +133,9 @@ function PriceChecker() {
           }
           return response.json();
         })
-        .then((data) => console.log(data))
+        .then((data) => {
+          setData(myData);
+        })
         .catch((error) => console.log(error));
     }
   }, [isMounted, submit]);
@@ -185,7 +196,7 @@ function PriceChecker() {
             </button>
           )}
         </form>
-        <Analysis total={100} percentage={20} discrepancies={2} items={list} />
+        {data ? <Analysis data={data} /> : null}
       </div>
     </main>
   );
