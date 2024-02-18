@@ -9,7 +9,7 @@ function PriceChecker() {
   useEffect(() => {
     if (isMounted.current) {
       // dummy URL for testing, change this out for the real post
-      fetch("https://httpbin.org/post", {
+      fetch("http://127.0.0.1:5000/imgProcessing", {
         mode: "cors",
         method: "POST",
         body: file,
