@@ -9,7 +9,7 @@ CareCompare is an application that analyzes itemized hospital bills to determine
 ![photo1](https://github.com/crispynoodlesoup/CareCompare/blob/main/server/data/im3.png)
 
 ## Contributors
-Frontend Developer: [Raphael Padilla](https://github.com/crispynoodlesoup)
+Frontend Developer: [Rafael Padilla](https://github.com/crispynoodlesoup)
 
 Backend Developer: [Peyton Barre](https://github.com/Peytonbarre)
 
