@@ -14,7 +14,7 @@ function Analysis({ data }) {
           setUserLocation({ lat: latitude, lon: longitude });
           axios
             .get(
-              `http://crispynoodlesoup.pythonanywhere.com/getNearbyAttorneys?lat=${latitude}&lon=${longitude}`
+              `https://crispynoodlesoup.pythonanywhere.com/getNearbyAttorneys?lat=${latitude}&lon=${longitude}`
             )
             .then((response) => {
               setAttorneys(response.data.attorneys);
@@ -155,7 +155,7 @@ function PriceChecker() {
       const formData = new FormData();
       formData.append("file", file);
       // dummy URL for testing, change this out for the real post
-      fetch("http://crispynoodlesoup.pythonanywhere.com/imgProcessing", {
+      fetch("https://crispynoodlesoup.pythonanywhere.com/imgProcessing", {
         mode: "cors",
         method: "POST",
         body: formData,
