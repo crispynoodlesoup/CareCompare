@@ -28,7 +28,7 @@ def getNearbyAttorneys():
         overpass_query = f"""
             [out:json];
             (
-                node["office"="lawyer"](around:10000, {user_lat}, {user_lon});
+                node["office"="lawyer"](around:15000, {user_lat}, {user_lon});
             );
             out body;
         """
@@ -52,6 +52,8 @@ def getNearbyAttorneys():
                     node['tags'].get('addr:country', '')
                 ]))
             }
+            attorneys.append(attorney)
+        attorneys = list(filter(lambda attorney: attorney["full_address"] != "" or attorney["email"] != "", attorneys))
         attorneys = attorneys[:9]
         return jsonify({'attorneys': attorneys})
     except Exception as e:

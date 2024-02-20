@@ -37,7 +37,7 @@ def analyze_text(text):
 def process_image(image_file):
     print(str(image_file))
     # Open the image and perform OCR
-    path_to_tesseract = "C:\Program Files\Tesseract-OCR\\tesseract.exe"
+    path_to_tesseract = "/usr/bin/tesseract"
     pytesseract.tesseract_cmd = path_to_tesseract 
     img = Image.open(image_file)
     text = pytesseract.image_to_string(img, lang='eng', config='--psm 6')
@@ -48,7 +48,7 @@ def process_image(image_file):
     return results
 
 def average_price(code, cost):
-    with open('data\\profiles1.csv') as file:
+    with open('data/profiles1.csv') as file:
         reader = DictReader(file)
         for row in reader:
             if(row['Code'] == code):
@@ -56,7 +56,7 @@ def average_price(code, cost):
         return float(cost)
 
 # Sample image paths
-image_paths = ["data\\ex3.jpg", "data\\target.png"]
+image_paths = ["data/ex3.jpg", "data/target.png"]
 
 # Process each image
 def parseandgather(image_file):
@@ -75,11 +75,6 @@ def parseandgather(image_file):
         avg_price = average_price(procedure_charge['Code'], procedure_charge['Charge'])
         if float(avg_price) > float(procedure_charge['Charge']) * 1.10:
             discrepancies += 1
-            smile = 1
-        elif float(avg_price) < float(procedure_charge['Charge']) *.90:
-            smile = 1
-        else:
-            smile = 1
         item = {
             "name": procedure_charge['Description'],
             "code": procedure_charge['Code'],
