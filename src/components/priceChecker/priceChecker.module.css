@@ -49,6 +49,7 @@ input[type="file"] {
   font-size: 16px;
   transition: all 0.15s;
   width: min-content;
+  text-wrap: nowrap;
 
   box-shadow: 2px 2px 2px 2px lightgrey;
 }
@@ -68,6 +69,11 @@ input[type="file"] {
 
 .selectedFile {
   font-size: 14px;
+}
+
+.sectionTitle {
+  margin-top: 32px;
+  color: black;
 }
 
 @media (max-width: 720px) {

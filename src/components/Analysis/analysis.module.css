@@ -5,7 +5,8 @@
 
 .overview {
   color: black;
-  margin: 16px auto;
+  margin: 16px auto 0;
+  padding: 0 16px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: min-content;
@@ -62,6 +63,7 @@
 }
 
 .tableWrapper {
+  padding: 16px;
   width: 100%;
   overflow-x: scroll;
 }

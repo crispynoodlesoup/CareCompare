@@ -120,7 +120,7 @@ function PriceChecker() {
         </form>
         {data ? <Analysis data={data} /> : null}
 
-        <h2 className={style.overviewTitle}>Attorneys Near You</h2>
+        <h2 className={style.sectionTitle}>Attorneys Near You</h2>
         <p>
           CareCompare should not be your only source of guidance on this issue!
           If you believe you have a case to appeal your expenses, please reach
