@@ -183,7 +183,7 @@ function PriceChecker() {
           )}
         </form>
         {loadingAnalysis ? <p className={style.loading}>Loading...</p> : null}
-        {data ? <Analysis data={data} /> : null}
+        {data && !loadingAnalysis ? <Analysis data={data} /> : null}
 
         <h2 className={style.sectionTitle}>Attorneys Near You</h2>
         <p>
