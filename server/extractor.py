@@ -48,7 +48,7 @@ def process_image(image_file):
     return results
 
 def average_price(code, cost):
-    with open('data/profiles1.csv') as file:
+    with open('/home/crispynoodlesoup/CareCompare/server/data/profiles1.csv') as file:
         reader = DictReader(file)
         for row in reader:
             if(row['Code'] == code):
