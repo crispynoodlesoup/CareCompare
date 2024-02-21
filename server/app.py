@@ -28,7 +28,7 @@ def getNearbyAttorneys():
         overpass_query = f"""
             [out:json];
             (
-                node["office"="lawyer"](around:15000, {user_lat}, {user_lon});
+                node["office"="lawyer"](around:16000, {user_lat}, {user_lon});
             );
             out body;
         """

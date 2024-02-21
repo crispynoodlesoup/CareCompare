@@ -13,39 +13,45 @@ function PriceChecker() {
   const [showExamples, setShowExamples] = useState(false);
   const [selectExample, setSelectExample] = useState(false);
   const [loadingAnalysis, setLoadingAnalysis] = useState(false);
+  const [updateAttorneys, setUpdateAttorneys] = useState({ count: 0 });
   const [loadingAttorneys, setLoadingAttorneys] = useState(false);
   const [data, setData] = useState(null);
   const [attorneys, setAttorneys] = useState(null);
   console.log(file);
 
-  const handleGetAttorneys = async () => {
-    try {
-      setLoadingAttorneys(true);
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          axios
-            .get(
-              `https://crispynoodlesoup.pythonanywhere.com/getNearbyAttorneys?lat=${latitude}&lon=${longitude}`
-            )
-            .then((response) => {
-              setAttorneys(response.data.attorneys);
-            })
-            .catch((error) => {
-              console.error("Error fetching attorneys: " + error);
-            })
-            .finally(() => {
-              setLoadingAttorneys(false);
-            });
-        },
-        (error) => {
-          console.error("Error fetching attorneys: " + error);
-        }
-      );
-    } catch (error) {
-      console.error("Error fetching attorneys: " + error);
+  useEffect(() => {
+    if (isMounted.current) {
+      try {
+        setLoadingAttorneys(true);
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            axios
+              .get(
+                `https://crispynoodlesoup.pythonanywhere.com/getNearbyAttorneys?lat=${latitude}&lon=${longitude}`
+              )
+              .then((response) => {
+                setAttorneys(response.data.attorneys);
+              })
+              .catch((error) => {
+                console.error("Error fetching attorneys: " + error);
+                setAttorneys([]);
+              })
+              .finally(() => {
+                setLoadingAttorneys(false);
+              });
+          },
+          (error) => {
+            console.error("Error fetching attorneys: " + error);
+            setAttorneys([]);
+          }
+        );
+      } catch (error) {
+        console.error("Error fetching attorneys: " + error);
+        setAttorneys([]);
+      }
     }
-  };
+  }, [updateAttorneys]);
 
   // post request to API
   useEffect(() => {
@@ -214,7 +220,10 @@ function PriceChecker() {
           out to a credible attorney or consultant on this matter.
         </p>
         <div className={style.fileButtons}>
-          <button className={style.fileButton} onClick={handleGetAttorneys}>
+          <button
+            className={style.fileButton}
+            onClick={() => setUpdateAttorneys({ count: updateAttorneys.count + 1 })}
+          >
             Find Nearby Attorneys
           </button>
         </div>
