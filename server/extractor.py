@@ -38,7 +38,7 @@ def process_image(image_file):
     print(str(image_file))
     # Open the image and perform OCR
     path_to_tesseract = "/usr/bin/tesseract"
-    pytesseract.tesseract_cmd = path_to_tesseract 
+    pytesseract.tesseract_cmd = path_to_tesseract
     img = Image.open(image_file)
     text = pytesseract.image_to_string(img, lang='eng', config='--psm 6')
 
@@ -60,7 +60,7 @@ image_paths = ["data/ex3.jpg", "data/target.png"]
 
 # Process each image
 def parseandgather(image_file):
-# Get the results for each image
+    # Get the results for each image
     results = process_image(image_file)
 
     scam_value = 0
@@ -82,11 +82,11 @@ def parseandgather(image_file):
             "measured": procedure_charge['Charge']
         }
         avg_value+=avg_price
-        scam_value+=float(procedure_charge['Charge'])       
+        scam_value+=float(procedure_charge['Charge'])
         items.append(item)
     response = {
         "total": round(scam_value-avg_value,2),
-        "percentage": round(float(scam_value/avg_value)*100, 1),
+        "percentage": round(float(scam_value/avg_value)*100 - 100, 1),
         "discrepancies": discrepancies,
         "items": items
     }
