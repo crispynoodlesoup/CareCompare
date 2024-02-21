@@ -10,11 +10,14 @@ function PriceChecker() {
   const isMounted = useRef(false);
   const [file, setFile] = useState(null);
   const [submit, setSubmit] = useState({ count: 0 });
+  const [loadingAnalysis, setLoadingAnalysis] = useState(false);
+  const [loadingAttorneys, setLoadingAttorneys] = useState(false);
   const [data, setData] = useState(null);
   const [attorneys, setAttorneys] = useState([]);
 
   const handleGetAttorneys = async () => {
     try {
+      setLoadingAttorneys(true);
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
@@ -27,6 +30,9 @@ function PriceChecker() {
             })
             .catch((error) => {
               console.error("Error fetching attorneys: " + error);
+            })
+            .finally( () => {
+              setLoadingAttorneys(false);
             });
         },
         (error) => {
@@ -41,6 +47,7 @@ function PriceChecker() {
   // post request to API
   useEffect(() => {
     if (isMounted.current) {
+      setLoadingAnalysis(true);
       const formData = new FormData();
       formData.append("file", file);
       // dummy URL for testing, change this out for the real post
@@ -58,7 +65,10 @@ function PriceChecker() {
         .then((data) => {
           setData(data);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => console.log(error))
+        .finally( () => {
+          setLoadingAnalysis(false);
+        });
     }
   }, [isMounted, submit]);
 
@@ -118,6 +128,7 @@ function PriceChecker() {
             </button>
           )}
         </form>
+        { loadingAnalysis ? <p className={style.loading}>Loading...</p> : null}
         {data ? <Analysis data={data} /> : null}
 
         <h2 className={style.sectionTitle}>Attorneys Near You</h2>
@@ -131,6 +142,7 @@ function PriceChecker() {
             Find Nearby Attorneys
           </button>
         </div>
+        { loadingAttorneys ? <p className={style.loading}>Loading...</p> : null}
         {attorneys.length > 0 ? <AttorniesTable attorneys={attorneys}/> : null}
       </div>
     </main>

@@ -68,12 +68,18 @@ input[type="file"] {
 }
 
 .selectedFile {
+  margin-top: 16px;
   font-size: 14px;
 }
 
 .sectionTitle {
   margin-top: 32px;
   color: black;
+}
+
+.loading {
+  margin-top: 12px;
+  font-size: 16px;
 }
 
 @media (max-width: 720px) {
