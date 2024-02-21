@@ -53,7 +53,7 @@ def getNearbyAttorneys():
                 ]))
             }
             attorneys.append(attorney)
-        attorneys = list(filter(lambda attorney: attorney["full_address"] != "" or attorney["email"] != "", attorneys))
+        attorneys = list(filter(lambda attorney: len(attorney["full_address"]) < 6 or attorney["email"] != "", attorneys))
         attorneys = attorneys[:9]
         return jsonify({'attorneys': attorneys})
     except Exception as e:
