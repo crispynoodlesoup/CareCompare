@@ -97,7 +97,7 @@ function PriceChecker() {
         .then((data) => {
           let exampleFile = new File([data], example, { type });
           setFile(exampleFile);
-          setSubmit({ count: submit.count + 1 })
+          setSubmit({ count: submit.count + 1 });
         });
     }
   }, [selectExample]);
@@ -121,15 +121,35 @@ function PriceChecker() {
           paying for. It's simple, just request an itemized receipt of your
           medical bill, and submit it here for an analysis.
         </p>
-        <h5>
-          Please upload a UB-04 document in a PNG/JPEG format or{" "}
-          <a
-            className={style.examplesButton}
-            onClick={() => setShowExamples(!showExamples)}
-          >
-            view examples
-          </a>
-        </h5>
+
+        {!showExamples ? (
+          <h5>
+            Please upload a UB-04 document in a PNG/JPEG format or{" "}
+            <a
+              className={style.examplesButton}
+              onClick={() => {
+                setShowExamples(true);
+              }}
+            >
+              view examples
+            </a>
+          </h5>
+        ) : (
+          <h5>
+            Submit your own file and{" "}
+            <a
+              className={style.examplesButton}
+              onClick={() => {
+                setShowExamples(false);
+                setFile(null);
+                setData(null);
+                setSelectExample("0");
+              }}
+            >
+              hide examples
+            </a>
+          </h5>
+        )}
         {showExamples ? (
           <select
             name="examples"
@@ -155,33 +175,35 @@ function PriceChecker() {
             >{`Selected file: ${file.name}`}</p>
           </>
         ) : null}
-        <form className={style.fileButtons}>
-          <label htmlFor="upload" className={style.fileButton}>
-            UPLOAD
-          </label>
-          <input
-            id="upload"
-            accept=".jpg, .jpeg, .png"
-            type="file"
-            onChange={(e) => {
-              setFile(e.target.files[0]);
-              setShowExamples(false);
-            }}
-          />
-          {file ? (
-            <button
-              type="button"
-              className={style.fileButton}
-              onClick={(e) => setSubmit({ count: submit.count + 1 })}
-            >
-              SUBMIT
-            </button>
-          ) : (
-            <button type="button" className={style.fileButton} disabled>
-              SUBMIT
-            </button>
-          )}
-        </form>
+        {!showExamples ? (
+          <form className={style.fileButtons}>
+            <label htmlFor="upload" className={style.fileButton}>
+              UPLOAD
+            </label>
+            <input
+              id="upload"
+              accept=".jpg, .jpeg, .png"
+              type="file"
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+                setShowExamples(false);
+              }}
+            />
+            {file ? (
+              <button
+                type="button"
+                className={style.fileButton}
+                onClick={(e) => setSubmit({ count: submit.count + 1 })}
+              >
+                SUBMIT
+              </button>
+            ) : (
+              <button type="button" className={style.fileButton} disabled>
+                SUBMIT
+              </button>
+            )}
+          </form>
+        ) : null}
         {loadingAnalysis ? <p className={style.loading}>Loading...</p> : null}
         {data && !loadingAnalysis ? <Analysis data={data} /> : null}
 
