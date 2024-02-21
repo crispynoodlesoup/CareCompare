@@ -17,7 +17,6 @@ function PriceChecker() {
   const [loadingAttorneys, setLoadingAttorneys] = useState(false);
   const [data, setData] = useState(null);
   const [attorneys, setAttorneys] = useState(null);
-  console.log(file);
 
   useEffect(() => {
     if (isMounted.current) {
