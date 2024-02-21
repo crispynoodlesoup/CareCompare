@@ -49,7 +49,6 @@ input[type="file"] {
   font-size: 16px;
   transition: all 0.15s;
   width: min-content;
-  text-wrap: nowrap;
 
   box-shadow: 2px 2px 2px 2px lightgrey;
 }
@@ -71,117 +70,8 @@ input[type="file"] {
   font-size: 14px;
 }
 
-.overviewTitle {
-  margin-top: 32px;
-  color: black;
-}
-
-.overview {
-  color: black;
-  margin: 16px auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: min-content;
-  column-gap: 16px;
-  width: 100%;
-  justify-content: center;
-}
-
-.statBox {
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 2px 2px 6px 2px lightgrey;
-}
-
-.statBox h3 {
-  font-size: 32px;
-}
-
-.statBox p {
-  margin: 0;
-}
-
-.itemTable {
-  width: 100%;
-  box-shadow: 2px 2px 6px 2px lightgrey;
-  border: none;
-  overflow: hidden;
-  border-radius: 4px;
-  border-collapse: collapse;
-}
-
-.itemTable2 {
-  margin: 16px auto;
-  box-shadow: 2px 2px 6px 2px lightgrey;
-  border: none;
-  overflow: hidden;
-  border-radius: 4px;
-  border-collapse: collapse;
-}
-
-.itemTable2 thead {
-  background-color: #ff90ba;
-  color: white;
-}
-
-.itemTable2 th,
-.itemTable2 td {
-  text-align: left;
-  padding: 8px 16px;
-  min-width: 120px;
-  max-width: 240px;
-  text-wrap: wrap;
-}
-
-.itemTable2 tr:nth-child(2n) {
-  background-color: #eee;
-}
-
-.itemTable thead {
-  background-color: #ff90ba;
-  color: white;
-}
-
-.itemTable th,
-.itemTable td {
-  text-align: left;
-  padding: 8px 16px;
-  max-width: 240px;
-  text-wrap: wrap;
-}
-
-.itemTable tr:nth-child(2n) {
-  background-color: #eee;
-}
-
-.itemPercent {
-  padding: 4px 8px;
-  width: min-content;
-  border-radius: 4px;
-  font-weight: bold;
-  font-size: 14px;
-}
-
-.tableWrapper {
-  width: 100%;
-  overflow-x: scroll;
-}
-
-.tableWrapper::-webkit-scrollbar {
-  display: none;
-}
-
 @media (max-width: 720px) {
   .fileImage {
     max-width: 90%;
-  }
-
-  .overview {
-    grid-template-rows: min-content min-content min-content;
-    grid-template-columns: 300px;
-  }
-  .itemTable2 th:nth-child(2),
-  .itemTable2 td:nth-child(2) {
-    display: none;
   }
 }
