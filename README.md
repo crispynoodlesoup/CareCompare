@@ -1,7 +1,7 @@
 # CareCompare
-
-## Description
 CareCompare is an application that analyzes itemized hospital bills to determine if they vary from the nation average. This allows patients to determine if they are getting a good or bad deal. This application also allows you to view nearby attorneys to help iron out expense discrepancies. This project was created for the 2024 Axxess hackathon.
+
+Try it on Vercel: https://care-compare-beryl.vercel.app
 
 ## Photos
 ![photo1](https://github.com/crispynoodlesoup/CareCompare/blob/main/server/data/im1.png)
