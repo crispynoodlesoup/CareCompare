@@ -92,7 +92,7 @@ function PriceChecker() {
           type = "png";
           break;
       }
-      fetch(example)
+      fetch(example, { mode: "cors" })
         .then((response) => response.blob())
         .then((data) => {
           let exampleFile = new File([data], example, { type });
