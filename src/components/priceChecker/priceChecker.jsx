@@ -13,7 +13,7 @@ function PriceChecker() {
   const [loadingAnalysis, setLoadingAnalysis] = useState(false);
   const [loadingAttorneys, setLoadingAttorneys] = useState(false);
   const [data, setData] = useState(null);
-  const [attorneys, setAttorneys] = useState([]);
+  const [attorneys, setAttorneys] = useState(null);
 
   const handleGetAttorneys = async () => {
     try {
@@ -143,7 +143,7 @@ function PriceChecker() {
           </button>
         </div>
         { loadingAttorneys ? <p className={style.loading}>Loading...</p> : null}
-        {attorneys.length > 0 ? <AttorniesTable attorneys={attorneys}/> : null}
+        { attorneys ? attorneys.length > 0 ? <AttorniesTable attorneys={attorneys}/> : <p>Could not find attorneys in your location {":("}</p> : null }
       </div>
     </main>
   );
