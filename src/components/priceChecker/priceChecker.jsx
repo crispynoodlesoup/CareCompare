@@ -97,6 +97,7 @@ function PriceChecker() {
         .then((data) => {
           let exampleFile = new File([data], example, { type });
           setFile(exampleFile);
+          setSubmit({ count: submit.count + 1 })
         });
     }
   }, [selectExample]);
