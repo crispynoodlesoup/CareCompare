@@ -14,3 +14,16 @@ main {
 p {
   margin-top: 8px;
 }
+
+a {
+  color: #4d4d4d;
+  transition: all 0.15s;
+}
+
+a:hover {
+  color: #9b2b2b;
+}
+
+a:active {
+  color: black;
+}
