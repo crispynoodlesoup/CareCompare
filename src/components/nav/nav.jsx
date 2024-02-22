@@ -17,8 +17,6 @@ function NavLink({ link, text, selected }) {
 function Nav() {
   const location = useLocation();
   const { pathname } = location;
-
-  console.log(pathname == "/about");
   return (
     <nav>
       <h2>CareCompare</h2>
