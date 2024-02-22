@@ -1,17 +1,30 @@
 import style from "./nav.module.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
-function NavLink({ link, text }) {
-  return <Link className={style.navLink} to={link}>{text}</Link>;
+function NavLink({ link, text, selected }) {
+  return (
+    <Link
+      className={
+        selected ? `${style.navLink} ${style.selectedLink}` : style.navLink
+      }
+      to={link}
+    >
+      {text}
+    </Link>
+  );
 }
 
 function Nav() {
+  const location = useLocation();
+  const { pathname } = location;
+
+  console.log(pathname == "/about");
   return (
     <nav>
       <h2>CareCompare</h2>
       <ul>
-        <NavLink link="./" text="Price Checker" />
-        <NavLink link="./about" text="About" />
+        <NavLink link="./" text="Price Checker" selected={pathname == "/"} />
+        <NavLink link="./about" text="About" selected={pathname == "/about"} />
       </ul>
     </nav>
   );

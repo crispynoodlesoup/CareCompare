@@ -23,17 +23,18 @@ nav ul {
 
 .navLink {
     text-decoration: none;
-    color: #fbced1;
+    color: #f0b4b8;
     font-weight: bold;
     transition: all 0.15s;
+    -webkit-user-drag: none;
 }
 
 .navLink:hover {
-    color: #ffffff;
+    color: #f8e1e1;
 }
 
 .navLink:active {
-    color: #b1b1b1;
+    color: #ffffff;
 }
 
 .selectedLink {
