@@ -1,11 +1,8 @@
 import style from "./nav.module.css";
+import { Link } from "react-router-dom";
 
 function NavLink({ link, text }) {
-  return (
-    <li className={style.navLink}>
-      <a href={link}>{text}</a>
-    </li>
-  );
+  return <Link className={style.navLink} to={link}>{text}</Link>;
 }
 
 function Nav() {
@@ -14,7 +11,7 @@ function Nav() {
       <h2>CareCompare</h2>
       <ul>
         <NavLink link="./" text="Price Checker" />
-        <NavLink link="./" text="About" />
+        <NavLink link="./about" text="About" />
       </ul>
     </nav>
   );

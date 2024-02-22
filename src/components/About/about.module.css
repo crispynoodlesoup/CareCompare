@@ -1,0 +1,16 @@
+main {
+  padding: 48px 16px 64px;
+  display: grid;
+  justify-content: center;
+}
+
+.content {
+  max-width: 800px;
+  text-align: center;
+  display: grid;
+  justify-content: center;
+}
+
+p {
+  margin-top: 8px;
+}

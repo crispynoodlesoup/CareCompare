@@ -21,18 +21,18 @@ nav ul {
   align-items: center;
 }
 
-.navLink a {
+.navLink {
     text-decoration: none;
     color: #fbced1;
     font-weight: bold;
     transition: all 0.15s;
 }
 
-.navLink a:hover {
+.navLink:hover {
     color: #ffffff;
 }
 
-.navLink a:active {
+.navLink:active {
     color: #b1b1b1;
 }
 
