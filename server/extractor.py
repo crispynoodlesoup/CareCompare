@@ -71,9 +71,8 @@ def parseandgather(image_file):
     print(f"Results for {image_file}:")
     items = []
     for procedure_charge in results['ProcedureCharges']:
-        #print(f"Code: {procedure_charge['Code']}, Description: {procedure_charge['Description']}, Charge: {procedure_charge['Charge']}")
         avg_price = average_price(procedure_charge['Code'], procedure_charge['Charge'])
-        if float(avg_price) > float(procedure_charge['Charge']) * 1.10:
+        if float(avg_price) * 1.15 < float(procedure_charge['Charge']):
             discrepancies += 1
         item = {
             "name": procedure_charge['Description'],
@@ -82,7 +81,7 @@ def parseandgather(image_file):
             "measured": procedure_charge['Charge']
         }
         avg_value+=avg_price
-        scam_value+=float(procedure_charge['Charge'])
+        scam_value+=procedure_charge['Charge']
         items.append(item)
     response = {
         "total": round(scam_value-avg_value,2),
